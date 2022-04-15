@@ -1,4 +1,8 @@
-import { INCREASE_COUNTER, DECREASE_COUNTER } from "../actionTypes";
+import {
+  INCREASE_COUNTER,
+  DECREASE_COUNTER,
+  GET_LATEST_NEWS,
+} from "../actionTypes";
 
 export const increaseCounter = () => ({
   type: INCREASE_COUNTER,
@@ -6,4 +10,8 @@ export const increaseCounter = () => ({
 
 export const decreaseCounter = () => ({
   type: DECREASE_COUNTER,
+});
+
+export const getLatestNews = () => ({
+  type: GET_LATEST_NEWS,
 });

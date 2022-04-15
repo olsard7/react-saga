@@ -2,6 +2,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   increaseCounter,
   decreaseCounter,
+  getLatestNews,
 } from "./redux/actions/actionCreator";
 
 const App = () => {
@@ -12,10 +13,13 @@ const App = () => {
 
   const handleDecrease = () => dispatch(decreaseCounter());
 
+  const handleNews = () => dispatch(getLatestNews());
+
   return (
     <div>
       <button onClick={handleIncrease}>+1</button>
       <button onClick={handleDecrease}>-1</button>
+      <button onClick={handleNews}>Get News</button>
       <h1>{count}</h1>
     </div>
   );
