@@ -2,6 +2,7 @@ import {
   INCREASE_COUNTER,
   DECREASE_COUNTER,
   GET_LATEST_NEWS,
+  SET_LATEST_NEWS,
 } from "../actionTypes";
 
 export const increaseCounter = () => ({
@@ -14,4 +15,9 @@ export const decreaseCounter = () => ({
 
 export const getLatestNews = () => ({
   type: GET_LATEST_NEWS,
+});
+
+export const setLatestNews = (hits) => ({
+  type: SET_LATEST_NEWS,
+  payload: hits,
 });
