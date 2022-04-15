@@ -1,10 +1,10 @@
-import { takeEvery, put } from "@redux-saga/core/effects";
+import { takeEvery, put, call } from "@redux-saga/core/effects";
 import { getLatestNews } from "../../api";
 import { setLatestNews } from "../actions/actionCreator";
 import { GET_LATEST_NEWS } from "../actionTypes";
 
 export function* handleLatestNews() {
-  const { hits } = yield getLatestNews();
+  const { hits } = yield call(getLatestNews, "react");
   yield put(setLatestNews(hits));
 }
 

@@ -7,6 +7,7 @@ import {
 
 const App = () => {
   const count = useSelector((store) => store?.counter?.count);
+  const news = useSelector((store) => store?.news?.news);
   const dispatch = useDispatch();
 
   const handleIncrease = () => dispatch(increaseCounter());
@@ -21,6 +22,9 @@ const App = () => {
       <button onClick={handleDecrease}>-1</button>
       <button onClick={handleNews}>Get News</button>
       <h1>{count}</h1>
+      {news.map(({ objectID, title }) => (
+        <p key={objectID}>{title}</p>
+      ))}
     </div>
   );
 };
