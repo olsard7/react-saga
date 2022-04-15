@@ -1,11 +1,18 @@
 import { takeEvery, put, call } from "@redux-saga/core/effects";
 import { getLatestNews } from "../../api";
-import { setLatestNews } from "../actions/actionCreator";
+import { setLatestNews, setLatestNewsError } from "../actions/actionCreator";
 import { GET_LATEST_NEWS } from "../actionTypes";
 
 export function* handleLatestNews() {
-  const { hits } = yield call(getLatestNews, "react");
-  yield put(setLatestNews(hits));
+  //   const { hits } = yield call(getLatestNews, "react");
+  //   yield put(setLatestNews(hits));
+
+  try {
+    const { hits } = yield call(getLatestNews, "react");
+    yield put(setLatestNews(hits));
+  } catch (error) {
+    yield put(setLatestNewsError());
+  }
 }
 
 export function* watchClickSaga() {

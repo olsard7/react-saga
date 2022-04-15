@@ -6,8 +6,8 @@ import {
 } from "./redux/actions/actionCreator";
 
 const App = () => {
-  const count = useSelector((store) => store?.counter?.count);
-  const news = useSelector((store) => store?.news?.news);
+  const { count } = useSelector((store) => store?.counter);
+  const { news, hasError } = useSelector((store) => store?.news);
   const dispatch = useDispatch();
 
   const handleIncrease = () => dispatch(increaseCounter());
@@ -22,9 +22,11 @@ const App = () => {
       <button onClick={handleDecrease}>-1</button>
       <button onClick={handleNews}>Get News</button>
       <h1>{count}</h1>
-      {news.map(({ objectID, title }) => (
-        <p key={objectID}>{title}</p>
-      ))}
+      {hasError ? (
+        <p className="error">Server error...</p>
+      ) : (
+        news.map(({ objectID, title }) => <p key={objectID}>{title}</p>)
+      )}
     </div>
   );
 };
